@@ -2,10 +2,10 @@ package view;
 
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import model.ShapeModel;
 
-abstract public class ShapeView extends JFrame implements Observer {
+abstract public class ShapeView extends JPanel implements Observer {
 
 	private ShapeModel model;
 
@@ -19,5 +19,7 @@ abstract public class ShapeView extends JFrame implements Observer {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
-	
+	protected ShapeModel getModel() {
+		return model;
+	}
 }
