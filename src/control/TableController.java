@@ -6,15 +6,38 @@ import model.table.CircleTableModel;
 import model.table.SquareTableModel;
 import view.ShapeView;
 
+/**
+ * Concrete controller, provides access to model and triggers tables redraw.
+ *
+ * @author Jan Machala <jan.machala@email.cz>
+ */
 public class TableController extends ShapeController {
 
+	/**
+	 * Square table model representing table rows.
+	 */
 	private SquareTableModel squareTableModel = null;
+
+	/**
+	 * Circle table model representing table rows.
+	 */
 	private CircleTableModel circleTableModel = null;
 
+	/**
+	 * Takes reference of model layer and view layer.
+	 *
+	 * @param ShapeModel model
+	 * @param ShapeView view
+	 */
 	public TableController(ShapeModel model, ShapeView view) {
 		this.initialize(model, view);
 	}
 
+	/**
+	 * Lazy initiate square table model.
+	 *
+	 * @return SquareTableModel
+	 */
 	public SquareTableModel getSquareTableModel() {
 		if (this.squareTableModel == null) {
 			String[] columns = {"id", "x", "y", "a"};
@@ -26,6 +49,11 @@ public class TableController extends ShapeController {
 		return this.squareTableModel;
 	}
 
+	/**
+	 * Lazy initiate circle table model
+	 *
+	 * @return CircleTableModel
+	 */
 	public CircleTableModel getCircleTableModel() {
 		if (this.circleTableModel == null) {
 			String[] columns = {"id", "x", "y", "r"};
@@ -37,6 +65,12 @@ public class TableController extends ShapeController {
 		return this.circleTableModel;
 	}
 
+	/**
+	 * Causes redrawing of tables.
+	 *
+	 * @param Observable o
+	 * @param Object o1
+	 */
 	@Override
 	public void update(Observable o, Object o1) {
 		this.circleTableModel.fireTableDataChanged();

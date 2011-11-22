@@ -10,8 +10,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import model.ShapeModel;
 
+/**
+ * Represents table view layer from MVC pattern.
+ *
+ * @author Jan Machala <jan.machala@email.cz>
+ */
 public class TableView extends ShapeView {
 
+	/**
+	 * @param ShapeModel model
+	 */
 	public TableView (ShapeModel model) {
 		this.initialize(model);
 
@@ -33,11 +41,24 @@ public class TableView extends ShapeView {
 		this.add(south, BorderLayout.EAST);
 	}
 
+	/**
+	 * Creates controller.
+	 *
+	 * @param ShapeModel model
+	 * @param ShapeView view
+	 * @return ShapeController
+	 */
 	@Override
 	ShapeController makeController(ShapeModel model, ShapeView view) {
 		return new TableController(model, view);
 	}
 
+	/**
+	 * Nothing to be update here.
+	 *
+	 * @param Observable o
+	 * @param Object o1
+	 */
 	@Override
 	public void update(Observable o, Object o1) {
 		// nothing here
