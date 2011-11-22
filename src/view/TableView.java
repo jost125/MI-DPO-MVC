@@ -2,64 +2,33 @@ package view;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
+import model.CircleTableModel;
 import model.ShapeModel;
-import model.entity.Square;
+import model.SquareTableModel;
 
 public class TableView extends ShapeView {
 
 	public TableView (ShapeModel model) {
 		this.initModel(model);
 		this.add(new JScrollPane(this.createSquareTable()));
+		this.add(new JScrollPane(this.createCircleTable()));
 	}
 
 	private JTable createSquareTable() {
-		SquareTableModel tableModel = new SquareTableModel(this.getModel());
+		String[] columns = {"id", "x", "y", "a"};
+		Class[] classes = {Integer.class, Integer.class, Integer.class, Integer.class};
+
+		SquareTableModel tableModel = new SquareTableModel(this.getModel(), columns, classes);
 		JTable table = new JTable(tableModel);
 		return table;
 	}
 
-	private class SquareTableModel extends AbstractTableModel {
+	private JTable createCircleTable() {
+		String[] columns = {"id", "x", "y", "r"};
+		Class[] classes = {Integer.class, Integer.class, Integer.class, Integer.class};
 
-		private ShapeModel model;
-		private String[] columnNames = {"id", "x", "y", "a"};
-		private Class[] columnTypes = {Integer.class, Integer.class, Integer.class, Integer.class};
-
-		public SquareTableModel(ShapeModel model) {
-			this.model = model;
-		}
-
-		@Override
-		public String getColumnName(int i) {
-			return this.columnNames[i];
-		}
-
-		@Override
-		public Class<?> getColumnClass(int i) {
-			return this.columnTypes[i];
-		}
-
-		@Override
-		public int getRowCount() {
-			return this.model.getSquareCount();
-		}
-
-		@Override
-		public int getColumnCount() {
-			return columnNames.length;
-		}
-
-		@Override
-		public Object getValueAt(int x, int y) {
-			Square square = this.model.getSquare(x);
-			switch (y) {
-				case 0: return x;
-				case 1: return square.getX();
-				case 2: return square.getY();
-				case 3: return square.getEdge();
-			}
-			throw new IndexOutOfBoundsException();
-		}
-
+		CircleTableModel tableModel = new CircleTableModel(this.getModel(), columns, classes);
+		JTable table = new JTable(tableModel);
+		return table;
 	}
 }
