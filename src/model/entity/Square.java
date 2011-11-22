@@ -15,7 +15,7 @@ public class Square extends Shape {
 	 * @param int radius
 	 */
 	public void setEdge(int edge) {
-		if (edge < 0) {
+		if (edge < 1) {
 			throw new RuntimeException("Edge has to be bigger than 0");
 		}
 		this.edge = edge;

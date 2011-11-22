@@ -16,7 +16,7 @@ public class Circle extends Shape {
 	 * @param int radius
 	 */
 	public void setRadius(int radius) {
-		if (radius < 0) {
+		if (radius < 1) {
 			throw new RuntimeException("Radius has to be bigger than 0");
 		}
 		this.radius = radius;

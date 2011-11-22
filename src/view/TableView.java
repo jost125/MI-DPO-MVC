@@ -29,16 +29,16 @@ public class TableView extends ShapeView {
 		JTable squareTable = new JTable(controller.getSquareTableModel());
 		JTable circleTable = new JTable(controller.getCircleTableModel());
 
-		JPanel north = new JPanel(new BorderLayout());
-		north.add(new JLabel("Squares"), BorderLayout.NORTH);
-		north.add(new JScrollPane(squareTable), BorderLayout.SOUTH);
+		JPanel west = new JPanel(new BorderLayout());
+		west.add(new JLabel("Circles"), BorderLayout.NORTH);
+		west.add(new JScrollPane(circleTable), BorderLayout.SOUTH);
 
-		JPanel south = new JPanel(new BorderLayout());
-		south.add(new JLabel("Circles"), BorderLayout.NORTH);
-		south.add(new JScrollPane(circleTable), BorderLayout.SOUTH);
+		JPanel east = new JPanel(new BorderLayout());
+		east.add(new JLabel("Squares"), BorderLayout.NORTH);
+		east.add(new JScrollPane(squareTable), BorderLayout.SOUTH);
 
-		this.add(north, BorderLayout.WEST);
-		this.add(south, BorderLayout.EAST);
+		this.add(west, BorderLayout.WEST);
+		this.add(east, BorderLayout.EAST);
 	}
 
 	/**
