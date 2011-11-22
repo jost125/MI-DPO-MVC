@@ -4,7 +4,6 @@
  */
 package mvc;
 
-import control.TableController;
 import view.Window;
 import model.ShapeModel;
 import model.entity.Circle;

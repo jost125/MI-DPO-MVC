@@ -15,7 +15,7 @@ class ImagePanel extends JPanel {
 
 	public ImagePanel(ShapeModel model) {
 		this.model = model;
-		this.setPreferredSize(new Dimension(200, 200));
+		this.setPreferredSize(new Dimension(300, 500));
 	}
 
 	@Override

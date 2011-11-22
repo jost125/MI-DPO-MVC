@@ -1,5 +1,7 @@
 package control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Observable;
@@ -8,7 +10,7 @@ import model.entity.Circle;
 import model.entity.Square;
 import view.ShapeView;
 
-public class GraphicController extends ShapeController implements MouseListener {
+public class GraphicController extends ShapeController implements MouseListener, ActionListener {
 	
 	public GraphicController(ShapeModel model, ShapeView view) {
 		this.initialize(model, view);
@@ -44,26 +46,31 @@ public class GraphicController extends ShapeController implements MouseListener 
 
 	@Override
 	public void mousePressed(MouseEvent me) {
-		return;
+		// nothing here
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		return;
+		// nothing here
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent me) {
-		return;
+		// nothing here
 	}
 
 	@Override
 	public void mouseExited(MouseEvent me) {
-		return;
+		// nothing here
 	}
 
 	@Override
 	public void update(Observable o, Object o1) {
-		System.out.println(this.getClass());
+		// nothing here
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		this.getModel().clearAll();
 	}
 }

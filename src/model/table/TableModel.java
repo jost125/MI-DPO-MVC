@@ -1,6 +1,7 @@
-package model;
+package model.table;
 
 import javax.swing.table.AbstractTableModel;
+import model.ShapeModel;
 
 abstract public class TableModel extends AbstractTableModel {
 	protected ShapeModel model;
@@ -11,6 +12,11 @@ abstract public class TableModel extends AbstractTableModel {
 		this.model = model;
 		this.columnNames = columnNames;
 		this.columnTypes = columnTypes;
+	}
+
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		return column > 0;
 	}
 
 	@Override
