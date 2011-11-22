@@ -35,19 +35,19 @@ class ImagePanel extends JPanel {
 	 * @param Graphics grphcs
 	 */
 	@Override
-	public void paintComponent(Graphics grphcs) {
-		super.paintComponent(grphcs);
+	public void paintComponent(Graphics graphics) {
+		super.paintComponent(graphics);
 		ArrayList<Circle> circles = this.model.getAllCircles();
 		ArrayList<Square> squares = this.model.getAllSquares();
 
 		for (Square square : squares) {
-			grphcs.setColor(Color.BLACK);
-			grphcs.drawRect(square.getX(), square.getY(), square.getEdge(), square.getEdge());
+			graphics.setColor(Color.BLACK);
+			graphics.drawRect(square.getX(), square.getY(), square.getEdge(), square.getEdge());
 		}
 
 		for (Circle circle : circles) {
-			grphcs.setColor(Color.BLACK);
-			grphcs.drawOval(circle.getX(), circle.getY(), circle.getRadius(), circle.getRadius());
+			graphics.setColor(Color.BLACK);
+			graphics.drawOval(circle.getX(), circle.getY(), circle.getRadius(), circle.getRadius());
 		}
 	}
 
