@@ -18,8 +18,10 @@ public class ShapeModel extends Observable {
 		return this.squares.get(index);
 	}
 
-	public void addSquare(Square square) {
+	public synchronized void addSquare(Square square) {
 		this.squares.add(square);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public ArrayList<Square> getAllSquares() {
@@ -34,8 +36,10 @@ public class ShapeModel extends Observable {
 		return this.circles.get(index);
 	}
 
-	public void addCircle(Circle circle) {
+	public synchronized void addCircle(Circle circle) {
 		this.circles.add(circle);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public ArrayList<Circle> getAllCircles() {

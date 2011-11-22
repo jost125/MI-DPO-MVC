@@ -1,5 +1,8 @@
 package view;
 
+import control.ShapeController;
+import control.TableController;
+import java.util.Observable;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import model.CircleTableModel;
@@ -8,27 +11,41 @@ import model.SquareTableModel;
 
 public class TableView extends ShapeView {
 
+	JTable squareTable;
+	JTable circleTable;
+
 	public TableView (ShapeModel model) {
-		this.initModel(model);
-		this.add(new JScrollPane(this.createSquareTable()));
-		this.add(new JScrollPane(this.createCircleTable()));
+		this.initialize(model);
+
+		this.squareTable = new JTable(this.getSquareTableModel());
+		this.circleTable = new JTable(this.getCircleTableModel());
+
+		this.add(new JScrollPane(this.squareTable));
+		this.add(new JScrollPane(this.circleTable));
 	}
 
-	private JTable createSquareTable() {
+	private SquareTableModel getSquareTableModel() {
 		String[] columns = {"id", "x", "y", "a"};
 		Class[] classes = {Integer.class, Integer.class, Integer.class, Integer.class};
 
-		SquareTableModel tableModel = new SquareTableModel(this.getModel(), columns, classes);
-		JTable table = new JTable(tableModel);
-		return table;
+		return new SquareTableModel(this.getModel(), columns, classes);
 	}
 
-	private JTable createCircleTable() {
+	private CircleTableModel getCircleTableModel() {
 		String[] columns = {"id", "x", "y", "r"};
 		Class[] classes = {Integer.class, Integer.class, Integer.class, Integer.class};
 
-		CircleTableModel tableModel = new CircleTableModel(this.getModel(), columns, classes);
-		JTable table = new JTable(tableModel);
-		return table;
+		return new CircleTableModel(this.getModel(), columns, classes);
+	}
+
+	@Override
+	ShapeController makeController(ShapeModel model, ShapeView view) {
+		return new TableController(model, view);
+	}
+
+	@Override
+	public void update(Observable o, Object o1) {
+		this.circleTable.setModel(this.getCircleTableModel());
+		this.squareTable.setModel(this.getSquareTableModel());
 	}
 }
